@@ -1,26 +1,26 @@
 import Head from "next/head";
 import NavBar from "./nav-bar";
+import { ReactNode } from "react";
+import SocialIcons from "./social-icons";
 
-export default function Layout({ children, home }) {
+interface LayoutProps {
+    children: ReactNode;
+}
+
+export default function Layout({ children}: LayoutProps) {
     return (
         <div className="">
             <Head>
                 <title>Naresh Prasad Koirala</title>
                 <meta name="description" content="Welcome to my portfolio page" />
-                <link rel="icon" href="/mainicon.ico" />
+                <link rel="icon" href="/icons/mainicon.ico" />
             </Head>
             <header>
                 <NavBar />
-
-                {home ? (
-                    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-56px)] py-8 px-4 sm:px-6 lg:px-8">
-                        {children}
-                    </div>
-                ) : (
-                    <>
-                        {children}
-                    </>
-                )}
+                <div className="flex flex-col items-center justify-center min-h-[calc(100vh-56px)] py-8 px-4 sm:px-6 lg:px-16 lg:pr-80 xl:px-24 xl:pr-96">
+                    {children}
+                </div>
+                <SocialIcons />
             </header>
         </div>
     );

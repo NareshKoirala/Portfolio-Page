@@ -8,7 +8,12 @@ const strings = {
   title: "SOFTWARE ENGINEER",
 };
 
-function CharacterIterator({ text1, text2 }) {
+interface CharacterIteratorProps {
+  text1: string;
+  text2: string;
+}
+
+function CharacterIterator({ text1, text2 }: CharacterIteratorProps) {
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [isTitle, setIsTitle] = useState(false);
@@ -58,13 +63,11 @@ function CharacterIterator({ text1, text2 }) {
 
 export default function Home() {
   return (
-    <Layout home>
-      <div className="flex flex-col items-center justify-center min-h-[calc(100vh-56px)] py-8 px-4 sm:px-6 lg:px-16 lg:pr-80 xl:px-24 xl:pr-96">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold dark:text-white mb-6 lg:mb-8 xl:mb-10 text-center">
-          {strings.welcome}
-        </h1>
-        <CharacterIterator text1={strings.name} text2={strings.title} />
-      </div>
+    <Layout>
+      <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold dark:text-white mb-6 lg:mb-8 xl:mb-10 text-center">
+        {strings.welcome}
+      </h1>
+      <CharacterIterator text1={strings.name} text2={strings.title} />
     </Layout>
   );
 }
