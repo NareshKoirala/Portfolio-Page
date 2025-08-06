@@ -5,7 +5,8 @@ const urls = {
     twitter: "https://x.com/NareshKoirala8",
     instagram: "https://www.instagram.com/eden_naresh/",
     linkedin: "https://www.linkedin.com/in/naresh-koirala-6205582b3/",
-    github: "https://github.com/NareshKoirala"
+    github: "https://github.com/NareshKoirala",
+    leetcode: "http://leetcode.com/u/nareshkoirala/"
 }
 
 const socialPlatforms = [
@@ -18,7 +19,7 @@ const socialPlatforms = [
     {
         name: "Instagram", 
         url: urls.instagram,
-        icon: "/icons/instagram.ico",
+        icon: "/icons/Instagram.ico",
         className: styles.instagram
     },
     {
@@ -32,6 +33,12 @@ const socialPlatforms = [
         url: urls.github,
         icon: "/icons/github.ico",
         className: styles.github
+    },
+    {
+        name: "LeetCode",
+        url: urls.leetcode,
+        icon: "/icons/leetcode.ico",
+        className: styles.leetcode
     }
 ];
 

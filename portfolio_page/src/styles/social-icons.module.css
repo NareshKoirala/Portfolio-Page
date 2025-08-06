@@ -87,6 +87,11 @@
   border-color: #1da1f2;
 }
 
+.leetcode:hover {
+  background: linear-gradient(135deg, #f9c51b, #f9c51b);
+  border-color: #f9c51b;
+}
+
 .instagram:hover {
   background: linear-gradient(135deg, #e4405f, #833ab4, #fccc63);
   border-color: #e4405f;
