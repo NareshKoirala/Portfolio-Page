@@ -2,6 +2,7 @@ import Head from "next/head";
 import NavBar from "./nav-bar";
 import { ReactNode } from "react";
 import SocialIcons from "./social-icons";
+import Resume from "./resume";
 
 interface LayoutProps {
     children: ReactNode;
@@ -16,6 +17,7 @@ export default function Layout({ children}: LayoutProps) {
                 <link rel="icon" href="/icons/mainicon.ico" />
             </Head>
             <header>
+                <Resume />
                 <NavBar />
                 <div className="flex flex-col items-center justify-center min-h-[calc(100vh-56px)] py-8 px-4 sm:px-6 lg:px-16 lg:pr-80 xl:px-24 xl:pr-96">
                     {children}

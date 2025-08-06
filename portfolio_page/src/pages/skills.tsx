@@ -28,6 +28,7 @@ export default function Skills() {
         </div>
         
         <SkillsCard />
+        
         <br />
       </section>
     </Layout>

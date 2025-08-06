@@ -1,0 +1,217 @@
+.resumeContainer {
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+.resumeWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Toggle Button Styles */
+.toggleButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 4px 16px rgba(0, 0, 0, 0.2);
+  min-width: 120px;
+}
+
+.toggleButton:hover {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.resumeLabel {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: white;
+}
+
+.arrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+  color: white;
+}
+
+.arrowUp {
+  transform: rotate(0deg);
+}
+
+.arrowDown {
+  transform: rotate(180deg);
+}
+
+/* Expanded Content Styles */
+.expandedContent {
+  padding: 1.5rem 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 4px 16px rgba(0, 0, 0, 0.2);
+  animation: slideDownFade 0.3s ease-out;
+  min-width: 250px;
+}
+
+.resumeTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.resumeActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+  min-width: 100px;
+}
+
+.actionButton:hover {
+  transform: translateY(-2px) scale(1.05);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.3),
+    0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.buttonIcon {
+  font-size: 1rem;
+}
+
+.viewButton:hover {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  border-color: #4CAF50;
+}
+
+.downloadButton:hover {
+  background: linear-gradient(135deg, #2196F3, #1976D2);
+  border-color: #2196F3;
+}
+
+/* Animations */
+@keyframes slideDownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.resumeContainer {
+  animation: slideUpFade 1s ease-out 1s both;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .resumeContainer {
+    top: 5rem; /* Increased to account for mobile navbar height */
+    z-index: 999; /* Just below navbar but above other content */
+  }
+
+  .toggleButton {
+    padding: 0.7rem 1.2rem;
+    min-width: 100px;
+  }
+
+  .resumeLabel {
+    font-size: 0.8rem;
+  }
+
+  .expandedContent {
+    padding: 1.2rem 1.5rem;
+    min-width: 200px;
+  }
+
+  .resumeTitle {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .resumeActions {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .actionButton {
+    padding: 0.7rem 1rem;
+    font-size: 0.8rem;
+    min-width: 90px;
+  }
+
+  .buttonIcon {
+    font-size: 0.9rem;
+  }
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-width: 480px) {
+  .resumeContainer {
+    top: 4.5rem; /* Slightly less space on very small screens */
+    z-index: 999;
+  }
+
+  .toggleButton {
+    padding: 0.6rem 1rem;
+    min-width: 90px;
+  }
+
+  .expandedContent {
+    padding: 1rem;
+    min-width: 180px;
+  }
+}
