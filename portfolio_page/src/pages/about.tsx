@@ -47,7 +47,7 @@ export default function About() {
         <div className={style.imageSection}>
           <div className={style.imageContainer}>
             <Image
-              src="/image/me-salute.png"
+              src="/image/me.png"
               alt="Naresh Prasad Koirala saluting"
               fill
               sizes="(max-width: 768px) 250px, (max-width: 1024px) 280px, 300px"
