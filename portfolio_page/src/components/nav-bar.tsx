@@ -63,7 +63,7 @@ export default function NavBar() {
             <Link href="/">
               <Image
                 className={styles.logo}
-                src="/Image/logo.png"
+                src="/image/logo.png"
                 alt="Logo"
                 width={80}
                 height={40} />
