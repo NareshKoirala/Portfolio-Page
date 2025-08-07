@@ -1,7 +1,8 @@
 import styles from "../styles/projects.module.css";
 
 interface Project {
-  id: number;
+  id?: number;
+  _id?: string;
   title: string;
   description: string;
   technologies: string[];
