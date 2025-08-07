@@ -10,6 +10,7 @@ export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [currentPath, setCurrentPath] = useState('/');
   const router = useRouter();
 
   // Handle screen size and scroll effect
@@ -34,6 +35,11 @@ export default function NavBar() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  // Track current path safely
+  useEffect(() => {
+    setCurrentPath(router.pathname);
+  }, [router.pathname]);
 
   // Close mobile menu when route changes
   useEffect(() => {
@@ -77,7 +83,7 @@ export default function NavBar() {
               <li key={item.href} className={styles.navItem}>
                 <Link
                   href={item.href}
-                  className={`${styles.navLink} ${router.pathname === item.href ? styles.active : ''
+                  className={`${styles.navLink} ${currentPath === item.href ? styles.active : ''
                     }`}
                 >
                   {item.label}

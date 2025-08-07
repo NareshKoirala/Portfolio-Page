@@ -1,6 +1,6 @@
 import Head from "next/head";
 import NavBar from "./nav-bar";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import SocialIcons from "./social-icons";
 import Resume from "./resume";
 import { useRouter } from "next/router";
@@ -11,7 +11,11 @@ interface LayoutProps {
 
 export default function Layout({ children}: LayoutProps) {
     const router = useRouter();
-    const isHomePage = router.pathname === '/';
+    const [isHomePage, setIsHomePage] = useState(false);
+
+    useEffect(() => {
+        setIsHomePage(router.pathname === '/');
+    }, [router.pathname]);
 
     return (
         <div className="">
