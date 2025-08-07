@@ -346,6 +346,25 @@ function EditForm({ doc, onSave, onChange }: EditFormProps) {
     return safeStringify(value);
   };
 
+  // Helper to handle array field changes
+  const handleArrayChange = (key: string, index: number, newValue: string) => {
+    const arr = Array.isArray(doc[key]) ? [...doc[key]] : [];
+    arr[index] = newValue;
+    onChange({ ...doc, [key]: arr });
+  };
+
+  const handleAddToArray = (key: string) => {
+    const arr = Array.isArray(doc[key]) ? [...doc[key]] : [];
+    arr.push("");
+    onChange({ ...doc, [key]: arr });
+  };
+
+  const handleRemoveFromArray = (key: string, index: number) => {
+    const arr = Array.isArray(doc[key]) ? [...doc[key]] : [];
+    arr.splice(index, 1);
+    onChange({ ...doc, [key]: arr });
+  };
+
   return (
     <div className={styles.editForm}>
       {Object.entries(doc).map(([key, value]) => (
@@ -353,6 +372,44 @@ function EditForm({ doc, onSave, onChange }: EditFormProps) {
           <label>{key}:</label>
           {key === '_id' ? (
             <input type="text" value={String(value)} disabled />
+          ) : Array.isArray(value) ? (
+            <div>
+              {value.map((item, idx) => (
+                typeof item === 'object' && item !== null ? (
+                  <div key={idx} style={{ border: '1px solid #ccc', padding: 8, marginBottom: 8, borderRadius: 4 }}>
+                    {Object.entries(item).map(([propKey, propValue]) => (
+                      <div key={propKey} style={{ marginBottom: 4 }}>
+                        <label style={{ marginRight: 4 }}>{propKey}:</label>
+                        <input
+                          type="text"
+                          value={String(propValue)}
+                          onChange={e => {
+                            const arr = Array.isArray(doc[key]) ? [...doc[key]] : [];
+                            arr[idx] = { ...arr[idx], [propKey]: e.target.value };
+                            onChange({ ...doc, [key]: arr });
+                          }}
+                          style={{ marginRight: 8 }}
+                        />
+                      </div>
+                    ))}
+                    <button type="button" onClick={() => handleRemoveFromArray(key, idx)} style={{ marginTop: 4 }}>Remove</button>
+                  </div>
+                ) : (
+                  <div key={idx} style={{ display: 'flex', alignItems: 'center', marginBottom: 4 }}>
+                    <input
+                      type="text"
+                      value={item}
+                      onChange={e => handleArrayChange(key, idx, e.target.value)}
+                      style={{ marginRight: 8 }}
+                    />
+                    <button type="button" onClick={() => handleRemoveFromArray(key, idx)} style={{ marginRight: 4 }}>Remove</button>
+                  </div>
+                )
+              ))}
+              <button type="button" onClick={() => handleAddToArray(key)}>
+                Add {Array.isArray(value) && value.length > 0 && typeof value[0] === 'object' ? 'Object' : 'Item'}
+              </button>
+            </div>
           ) : typeof value === 'object' ? (
             <textarea
               value={formatValue(value)}
