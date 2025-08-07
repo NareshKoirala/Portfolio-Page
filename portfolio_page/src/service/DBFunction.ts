@@ -42,12 +42,32 @@ async function getDatabase(retries = 3) {
   for (let i = 0; i < retries; i++) {
     try {
       const client = await clientPromise;
-      return client.db(process.env.MONGO_DB);
+      const db = client.db(process.env.MONGO_DB);
+      
+      // Test the connection
+      await db.admin().ping();
+      console.log(`Database connection successful on attempt ${i + 1}`);
+      
+      return db;
     } catch (error) {
       console.error(`Database connection attempt ${i + 1} failed:`, error);
+      
+      // Log specific SSL/TLS errors for debugging
+      if (error instanceof Error) {
+        if (error.message.includes('SSL') || error.message.includes('TLS') || error.message.includes('ssl3_read_bytes')) {
+          console.error('SSL/TLS Error detected. This might be due to:');
+          console.error('- TLS version mismatch between client and server');
+          console.error('- Certificate validation issues');
+          console.error('- Network connectivity problems');
+          console.error('- MongoDB server SSL configuration');
+        }
+      }
+      
       if (i === retries - 1) throw error;
       // Wait before retrying (exponential backoff)
-      await new Promise(resolve => setTimeout(resolve, Math.pow(2, i) * 1000));
+      const delay = Math.pow(2, i) * 1000;
+      console.log(`Waiting ${delay}ms before retry...`);
+      await new Promise(resolve => setTimeout(resolve, delay));
     }
   }
   throw new Error('Failed to connect to database after retries');
