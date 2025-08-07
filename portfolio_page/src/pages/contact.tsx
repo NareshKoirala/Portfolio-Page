@@ -19,12 +19,37 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    // Add email service integration here
-  };
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch('/api/sendEmail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert('Message sent successfully!');
+      setFormData({
+        name: '',
+        email: '',
+        subject: 'General inquiries',
+        message: ''
+      });
+    } else {
+      alert(data.error || 'Something went wrong.');
+    }
+  } catch (err) {
+    console.error(err);
+    alert('Failed to send message.');
+  }
+};
+
 
   return (
     <Layout>
