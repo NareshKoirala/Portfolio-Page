@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import mobileStyles from "../styles/nav-bar-mobile.module.css";
 import desktopStyles from "../styles/nav-bar-desktop.module.css";
 import Image from "next/image";
+import { href } from "react-router-dom";
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,6 +50,7 @@ export default function NavBar() {
     { href: "/skills", label: "Skills" },
     { href: "/projects", label: "Projects" },
     { href: "/contact", label: "Contact" },
+    { href: "/admin", label: "Admin" },
   ];
 
   // Choose styles based on screen size
