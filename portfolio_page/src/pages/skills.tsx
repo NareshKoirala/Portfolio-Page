@@ -2,25 +2,8 @@ import Head from "next/head";
 import Layout from "../components/layout";
 import styles from "../styles/skills.module.css";
 import SkillsCard from "../components/skillscard";
-import { findDocuments } from "../service/DBFunction";
-import { GetServerSideProps } from 'next';
 
-interface Skill {
-  name: string;
-  level: number;
-}
-
-interface SkillCategory {
-  _id?: string;
-  category: string;
-  skills: Skill[];
-}
-
-interface SkillsProps {
-  skillCategories: SkillCategory[];
-}
-
-export default function Skills({ skillCategories }: SkillsProps) {
+export default function Skills() {
   return (
     <Layout>
       <Head>
@@ -44,30 +27,10 @@ export default function Skills({ skillCategories }: SkillsProps) {
           </div>
         </div>
         
-        <SkillsCard skillCategories={skillCategories} />
+        <SkillsCard />
         
         <br />
       </section>
     </Layout>
   );
 }
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  try {
-    const skillCategories = await findDocuments('Skills');
-    
-    return {
-      props: {
-        skillCategories: JSON.parse(JSON.stringify(skillCategories)) // Serialize for Next.js
-      }
-    };
-  } catch (error) {
-    console.error('Error fetching skills:', error);
-    
-    return {
-      props: {
-        skillCategories: []
-      }
-    };
-  }
-};
