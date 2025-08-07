@@ -37,10 +37,20 @@ function prepareFilter(filter: DatabaseDocument): DatabaseDocument {
   return prepared;
 }
 
-// Core database connection helper
-async function getDatabase() {
-  const client = await clientPromise;
-  return client.db(process.env.MONGO_DB);
+// Core database connection helper with retry logic
+async function getDatabase(retries = 3) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const client = await clientPromise;
+      return client.db(process.env.MONGO_DB);
+    } catch (error) {
+      console.error(`Database connection attempt ${i + 1} failed:`, error);
+      if (i === retries - 1) throw error;
+      // Wait before retrying (exponential backoff)
+      await new Promise(resolve => setTimeout(resolve, Math.pow(2, i) * 1000));
+    }
+  }
+  throw new Error('Failed to connect to database after retries');
 }
 
 // Main handler function for HTTP-style operations
@@ -184,9 +194,14 @@ export async function deleteDocument(
 
 // Utility functions
 export async function getCollectionNames(): Promise<string[]> {
-  const db = await getDatabase();
-  const collections = await db.listCollections().toArray();
-  return collections.map(collection => collection.name);
+  try {
+    const db = await getDatabase();
+    const collections = await db.listCollections().toArray();
+    return collections.map(collection => collection.name);
+  } catch (error) {
+    console.error('Error getting collection names:', error);
+    throw new Error(`Failed to retrieve collection names: ${error instanceof Error ? error.message : 'Unknown error'}`);
+  }
 }
 
 export async function countDocuments(
