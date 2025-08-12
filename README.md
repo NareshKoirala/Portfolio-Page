@@ -37,7 +37,7 @@ To run the portfolio locally, follow these steps:
    ```
 2. **Navigate to the project directory**:
    ```bash
-   cd Portfolio-Page
+   cd portfolio-page
    ```
 3. **Install dependencies**:
    ```bash
