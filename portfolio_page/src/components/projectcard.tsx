@@ -8,7 +8,6 @@ interface Project {
   technologies: string[];
   githubUrl?: string;
   liveUrl?: string;
-  imageUrl?: string;
 }
 
 interface ProjectCardProps {
@@ -18,11 +17,6 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <div className={styles.projectCard}>
-      {project.imageUrl && (
-        <div className={styles.projectImage}>
-          <img src={project.imageUrl} alt={project.title} />
-        </div>
-      )}
       <div className={styles.projectContent}>
         <h3 className={styles.projectTitle}>{project.title}</h3>
         <p className={styles.projectDescription}>{project.description}</p>

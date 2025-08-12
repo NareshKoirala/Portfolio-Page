@@ -49,6 +49,7 @@
     list-style: none;
     margin: 0;
     display: flex;
+    z-index: 999; /* Ensure menu appears above content */
 }
 
 .navList.open {

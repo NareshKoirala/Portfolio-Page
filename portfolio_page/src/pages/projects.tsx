@@ -12,7 +12,6 @@ interface Project {
   technologies: string[];
   githubUrl: string;
   liveUrl: string;
-  imageUrl: string;
 }
 
 interface ProjectsProps {
@@ -22,25 +21,31 @@ interface ProjectsProps {
 export default function Projects({ projects }: ProjectsProps) {
   return (
     <Layout>
-      <div className={styles.projectsContainer}>
+      <section className={styles.projectsContainer} aria-labelledby="projects-title">
         <div className={styles.contentSection}>
           <div className={styles.textContent}>
             <br /> 
-            <h1 className={styles.title}>My Projects</h1>
-            <p className={styles.description}>
-              Here are some of the projects I've worked on. Each project showcases different 
-              technologies and skills, from full-stack applications to frontend interfaces. 
-              Click the links to view the source code or live demos.
-            </p>
+            <h1 id="projects-title" className={styles.title}>My Projects</h1>
+            <div className={styles.paragraphContainer}>
+              <p className={styles.paragraph}>
+                Here are some of the projects I've worked on. Each project showcases different 
+                technologies and skills, from full-stack applications to frontend interfaces. 
+                Click the links to view the source code or live demos.
+              </p>
+            </div>
           </div>
         </div>
         
-        <div className={styles.projectsGrid}>
-          {projects.map((project: Project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
+        <div className={styles.projectsSection}>
+          <div className={styles.projectsGrid}>
+            {projects.map((project: Project) => (
+              <ProjectCard key={project._id || project.id} project={project} />
+            ))}
+          </div>
         </div>
-      </div>
+        
+        <br />
+      </section>
     </Layout>
   );
 }

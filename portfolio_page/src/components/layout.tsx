@@ -4,6 +4,7 @@ import { ReactNode, useEffect, useState } from "react";
 import SocialIcons from "./social-icons";
 import Resume from "./resume";
 import { useRouter } from "next/router";
+import styles from "../styles/layout.module.css";
 
 interface LayoutProps {
     children: ReactNode;
@@ -12,13 +13,30 @@ interface LayoutProps {
 export default function Layout({ children}: LayoutProps) {
     const router = useRouter();
     const [isHomePage, setIsHomePage] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
         setIsHomePage(router.pathname === '/');
     }, [router.pathname]);
 
+    const isAdminPage = router.pathname === '/admin';
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        // Initial check
+        handleResize();
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
-        <div className="">
+        <div className={styles.layoutContainer}>
             <Head>
                 <title>Naresh Prasad Koirala</title>
                 <meta name="description" content="Welcome to my portfolio page" />
@@ -27,7 +45,7 @@ export default function Layout({ children}: LayoutProps) {
             <header>
                 {isHomePage && <Resume />}
                 <NavBar />
-                <div className="flex flex-col items-center justify-center min-h-[calc(100vh-56px)] py-8 px-4 sm:px-6 lg:px-16 lg:pr-80 xl:px-24 xl:pr-96">
+                <div className={`${styles.mainContent} ${isMobile ? styles.mobile : styles.desktop} ${isAdminPage ? styles.admin : ''}`}>
                     {children}
                 </div>
                 <SocialIcons />

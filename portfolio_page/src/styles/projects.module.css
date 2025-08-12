@@ -46,6 +46,25 @@
   z-index: -1;
 }
 
+.paragraphContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.paragraph {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+  text-align: justify;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.paragraph:hover {
+  opacity: 1;
+}
+
 .description {
   font-size: 1.1rem;
   line-height: 1.6;
@@ -53,13 +72,20 @@
   margin-bottom: 3rem;
 }
 
+.projectsSection {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 0;
+}
+
 .projectsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
-  width: 100%;
+  justify-content: center;
   max-width: 1200px;
-  margin: 0 auto;
 }
 
 .projectCard {
@@ -70,30 +96,15 @@
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  flex: 1 1 350px;
+  min-width: 320px;
+  max-width: 400px;
 }
 
 .projectCard:hover {
   transform: translateY(-8px);
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
   border-color: rgba(168, 85, 247, 0.3);
-}
-
-.projectImage {
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  position: relative;
-}
-
-.projectImage img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.projectCard:hover .projectImage img {
-  transform: scale(1.05);
 }
 
 .projectContent {
@@ -209,12 +220,14 @@
   }
   
   .projectsGrid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
     gap: 1.5rem;
   }
   
   .projectCard {
-    margin: 0 auto;
+    flex: none;
+    width: 100%;
     max-width: 400px;
   }
   
@@ -264,4 +277,24 @@
     font-size: 0.75rem;
     padding: 0.2rem 0.6rem;
   }
+}
+
+/* Animation for content */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.textContent {
+  animation: fadeInUp 1s ease-out;
+}
+
+.projectsSection {
+  animation: fadeInUp 1s ease-out 0.2s both;
 }
