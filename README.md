@@ -87,5 +87,3 @@ Feel free to reach out for inquiries or collaboration:
 ---
 
 Thank you for visiting my portfolio repository! 🌟
-
-</
