@@ -5,6 +5,7 @@ import SocialIcons from "./social-icons";
 import Resume from "./resume";
 import { useRouter } from "next/router";
 import styles from "../styles/layout.module.css";
+import Stars from "./stars";
 
 interface LayoutProps {
     children: ReactNode;
@@ -37,6 +38,7 @@ export default function Layout({ children}: LayoutProps) {
 
     return (
         <div className={styles.layoutContainer}>
+            <Stars />
             <Head>
                 <title>Naresh Prasad Koirala</title>
                 <meta name="description" content="Welcome to my portfolio page" />
