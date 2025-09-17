@@ -1,5 +1,5 @@
-import Layout from "../components/layout";
-import ProjectCard from "../components/projectcard";
+import Layout from "./layout";
+import ProjectCard from "./projectcard";
 import styles from "../styles/projects.module.css";
 import { findDocuments } from "../service/DBFunction";
 import { GetServerSideProps } from 'next';
@@ -20,7 +20,7 @@ interface ProjectsProps {
 
 export default function Projects({ projects }: ProjectsProps) {
   return (
-    <Layout>
+    <>
       <section className={styles.projectsContainer} aria-labelledby="projects-title">
         <div className={styles.contentSection}>
           <div className={styles.textContent}>
@@ -28,9 +28,7 @@ export default function Projects({ projects }: ProjectsProps) {
             <h1 id="projects-title" className={styles.title}>My Projects</h1>
             <div className={styles.paragraphContainer}>
               <p className={styles.paragraph}>
-                Here are some of the projects I've worked on. Each project showcases different 
-                technologies and skills, from full-stack applications to frontend interfaces. 
-                Click the links to view the source code or live demos.
+                Here are some of the projects I've worked on. Each project showcases different technologies and skills, from full-stack applications to frontend interfaces. Click the links to view the source code or live demos.
               </p>
             </div>
           </div>
@@ -46,26 +44,6 @@ export default function Projects({ projects }: ProjectsProps) {
         
         <br />
       </section>
-    </Layout>
+    </>
   );
 }
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  try {
-    const projects = await findDocuments('Project');
-    
-    return {
-      props: {
-        projects: JSON.parse(JSON.stringify(projects)) // Serialize for Next.js
-      }
-    };
-  } catch (error) {
-    console.error('Error fetching projects:', error);
-    
-    return {
-      props: {
-        projects: []
-      }
-    };
-  }
-};

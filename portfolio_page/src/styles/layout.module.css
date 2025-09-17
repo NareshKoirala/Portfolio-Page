@@ -1,94 +1,76 @@
 /* Layout Container */
+
 .layoutContainer {
   min-height: 100vh;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 /* Main Content Area */
+
 .mainContent {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 80px);
-  padding: 2rem 1rem;
+  min-height: 100vh;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
   transition: all 0.3s ease;
 }
 
 /* Mobile Layout */
+
 .mainContent.mobile {
-  padding-top: 80px; /* Account for fixed mobile navbar height (64px + buffer) */
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-bottom: 2rem;
-  margin-right: 0;
-  width: 100%;
-  box-sizing: border-box;
-  min-height: calc(100vh - 80px);
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
 }
 
 /* Desktop Layout */
+
 .mainContent.desktop {
-  padding-top: 2rem;
-  padding-left: 1.5rem;
-  padding-right: 17vw; /* Account for fixed desktop sidebar (15vw + 2vw buffer) */
-  padding-bottom: 2rem;
-  margin-left: 0;
-  width: 100%;
-  box-sizing: border-box;
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
 }
 
 /* Responsive breakpoints */
+
 @media (max-width: 768px) {
   .mainContent {
-    padding-top: 80px !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-    margin-right: 0 !important;
-  }
-  
-  /* When mobile menu is open, add extra top space */
-  .mainContent.mobileMenuOpen {
-    padding-top: 120px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100vw !important;
+    min-height: 100vh !important;
   }
 }
+
 
 @media (min-width: 769px) {
   .mainContent {
-    padding-right: 17vw !important;
-    padding-left: 2rem !important;
-  }
-}
-
-@media (min-width: 1024px) {
-  .mainContent {
-    padding-right: 17vw !important;
-    padding-left: 3rem !important;
-  }
-}
-
-@media (min-width: 1280px) {
-  .mainContent {
-    padding-right: 17vw !important;
-    padding-left: 4rem !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100vw !important;
+    min-height: 100vh !important;
   }
 }
 
 /* Additional spacing for admin pages */
+
 .mainContent.admin {
-  align-items: stretch;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   max-width: none;
+  padding: 0;
 }
-
 .mainContent.admin.mobile {
-  padding-top: 90px; /* Extra space for admin forms */
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding: 0;
 }
-
 .mainContent.admin.desktop {
-  padding-top: 2rem;
-  padding-left: 1rem;
-  padding-right: 17vw;
+  padding: 0;
 }

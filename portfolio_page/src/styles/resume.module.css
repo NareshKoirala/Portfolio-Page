@@ -158,11 +158,6 @@
 
 /* Mobile Styles */
 @media (max-width: 768px) {
-  .resumeContainer {
-    top: 5rem; /* Increased to account for mobile navbar height */
-    z-index: 999; /* Just below navbar but above other content */
-  }
-
   .toggleButton {
     padding: 0.7rem 1.2rem;
     min-width: 100px;
@@ -200,10 +195,6 @@
 
 /* Responsive adjustments for very small screens */
 @media (max-width: 480px) {
-  .resumeContainer {
-    top: 4.5rem; /* Slightly less space on very small screens */
-    z-index: 999;
-  }
 
   .toggleButton {
     padding: 0.6rem 1rem;

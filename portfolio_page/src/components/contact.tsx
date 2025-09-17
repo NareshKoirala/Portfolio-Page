@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Head from "next/head";
-import Layout from "../components/layout";
+import Layout from "./layout";
 import styles from "../styles/contact.module.css";
 
 export default function Contact() {
@@ -52,7 +52,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
 
   return (
-    <Layout>
+    <>
       <Head>
         <meta name="keywords" content="Naresh Prasad Koirala, contact, web developer, React, Next.js" />
       </Head>
@@ -148,6 +148,6 @@ const handleSubmit = async (e: React.FormEvent) => {
           </form>
         </div>
       </section>
-    </Layout>
+    </>
   );
 }

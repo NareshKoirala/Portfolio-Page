@@ -1,5 +1,4 @@
 import Head from "next/head";
-import NavBar from "./nav-bar";
 import { ReactNode, useEffect, useState } from "react";
 import SocialIcons from "./social-icons";
 import Resume from "./resume";
@@ -13,12 +12,7 @@ interface LayoutProps {
 
 export default function Layout({ children}: LayoutProps) {
     const router = useRouter();
-    const [isHomePage, setIsHomePage] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        setIsHomePage(router.pathname === '/');
-    }, [router.pathname]);
 
     const isAdminPage = router.pathname === '/admin';
 
@@ -38,15 +32,18 @@ export default function Layout({ children}: LayoutProps) {
 
     return (
         <div className={styles.layoutContainer}>
-            <Stars />
+            <Stars
+                count={isMobile ? 60 : 150}
+                minSize={isMobile ? 0.5 : 1}
+                maxSize={isMobile ? 1.5 : 2.5}
+            />
             <Head>
                 <title>Naresh Prasad Koirala</title>
                 <meta name="description" content="Welcome to my portfolio page" />
                 <link rel="icon" href="/icons/mainicon.ico" />
             </Head>
-            <header>
-                {isHomePage && <Resume />}
-                <NavBar />
+            <header style={{ width: "100vw" }}>
+                <Resume />
                 <div className={`${styles.mainContent} ${isMobile ? styles.mobile : styles.desktop} ${isAdminPage ? styles.admin : ''}`}>
                     {children}
                 </div>

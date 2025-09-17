@@ -55,7 +55,6 @@ export default function NavBar() {
     { href: "/skills", label: "Skills" },
     { href: "/projects", label: "Projects" },
     { href: "/contact", label: "Contact" },
-    { href: "/admin", label: "Admin" },
   ];
 
   // Choose styles based on screen size

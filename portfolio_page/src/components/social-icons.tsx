@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "../styles/social-icons.module.css";
+import Resume from "./resume";
 
 const urls = {
     twitter: "https://x.com/NareshKoirala8",

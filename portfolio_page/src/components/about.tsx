@@ -1,11 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
-import Layout from "../components/layout";
 import style from "../styles/about.module.css";
 
 export default function About() {
   return (
-    <Layout>
+    <>
       <Head>
         <meta name="keywords" content="Naresh Prasad Koirala, web developer, React, Next.js, TypeScript" />
       </Head>
@@ -57,6 +56,6 @@ export default function About() {
           </div>
         </div>
       </section>
-    </Layout>
+    </>
   );
 }
