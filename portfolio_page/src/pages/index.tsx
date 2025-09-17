@@ -6,7 +6,7 @@ import { findDocuments } from "../service/DBFunction";
 import { GetServerSideProps } from 'next';
 import Projects from '../components/projects';
 import Contact from '../components/contact';
-import { motion } from 'framer-motion';
+
 import Layout from '@/components/layout';
 
 export default function Index({ skillCategories, projects }: SkillsProps & ProjectsProps) {
@@ -20,29 +20,11 @@ export default function Index({ skillCategories, projects }: SkillsProps & Proje
 
   return (
     <Layout>
-      {sections.map((section, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: section.direction }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.8, delay: section.delay, ease: "easeOut" }
-          }}
-          viewport={{ once: false, amount: 0.2 }} // re-animate on scroll
-          animate={{
-            y: [0, -12, 0, 12, 0], // smooth float up and down
-          }}
-          transition={{
-            repeat: Infinity,
-            repeatType: "mirror",
-            duration: 6,
-            ease: "easeInOut",
-          }}
-        >
-          {section.component}
-        </motion.div>
-      ))}
+        {sections.map((section, index) => (
+          <div key={index}>
+            {section.component}
+          </div>
+        ))}
       <SpeedInsights />
     </Layout>
   );

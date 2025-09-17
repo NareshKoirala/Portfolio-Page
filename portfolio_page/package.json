@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-spring/web": "^10.0.2",
     "@vercel/speed-insights": "^1.2.0",
     "framer-motion": "^12.23.13",
     "mongodb": "^6.18.0",
