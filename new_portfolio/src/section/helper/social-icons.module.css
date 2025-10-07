@@ -1,0 +1,153 @@
+.socialContainer {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+.socialIconsWrapper {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.socialIconsWrapper:hover {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.socialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.socialIcon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.socialIcon:hover::before {
+  opacity: 1;
+}
+
+.socialIcon:hover {
+  transform: translateY(-4px) scale(1.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.3),
+    0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.socialIconImage {
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease;
+  filter: brightness(0) invert(1);
+  position: relative;
+  z-index: 1;
+}
+
+.socialIcon:hover .socialIconImage {
+  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+  transform: scale(1.1);
+}
+
+/* Specific hover colors for each platform */
+.twitter:hover {
+  background: linear-gradient(135deg, #1da1f2, #0d8bd9);
+  border-color: #1da1f2;
+}
+
+.leetcode:hover {
+  background: linear-gradient(135deg, #f9c51b, #f9c51b);
+  border-color: #f9c51b;
+}
+
+.instagram:hover {
+  background: linear-gradient(135deg, #e4405f, #833ab4, #fccc63);
+  border-color: #e4405f;
+}
+
+.linkedin:hover {
+  background: linear-gradient(135deg, #0077b5, #005885);
+  border-color: #0077b5;
+}
+
+.github:hover {
+  background: linear-gradient(135deg, #333, #24292e);
+  border-color: #333;
+}
+
+.twitter:hover .socialIconImage,
+.instagram:hover .socialIconImage,
+.linkedin:hover .socialIconImage,
+.github:hover .socialIconImage {
+  filter: brightness(0) invert(1);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .socialContainer {
+    bottom: 1rem;
+  }
+
+  .socialIconsWrapper {
+    gap: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  .socialIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .socialIconImage {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Animation for entrance */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.socialContainer {
+  animation: slideUpFade 1s ease-out 1.5s both;
+}

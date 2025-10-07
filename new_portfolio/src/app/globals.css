@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+body {
+  background-color: #212842;
+  color: #F0E7D5;
+  cursor: none;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+a{
+  cursor: none;
+}
+
+button{
+  cursor: none;
+}
+.fade-container {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-container.active {
+  opacity: 1;
+}
+
