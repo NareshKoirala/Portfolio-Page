@@ -62,7 +62,7 @@ const handleSubmit = async (e: React.FormEvent) => {
               </p>
               <p className={styles.paragraph}>
                 Whether you have a project in mind, want to collaborate, or just want to say hi — 
-                I'd love to hear from you. Let's build something amazing together.
+                I&apos;d love to hear from you. Let&apos;s build something amazing together.
               </p>
             </div>
             

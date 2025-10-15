@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import useIsMobile from "../helper/useIsMobile";
 
 const skills = {
   languages: "JAVASCRIPT ✦ TYPESCRIPT ✦ C# ✦ PYTHON ✦ HTML ✦ CSS ✦ ",

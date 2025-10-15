@@ -60,7 +60,7 @@ const Home = () => {
               }`}
             >
               Just a Nepali boi living the Canadian life, grinding for a tech
-              job in 2025. Anime’s on hold — staying locked in on software dev.
+              job in 2025. Anime&apos;s on hold — staying locked in on software dev.
               But Chelsea FC? Always.
               <span className="text-blue-500"> #KTBFFH</span>
             </motion.p>
