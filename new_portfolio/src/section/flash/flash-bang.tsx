@@ -14,31 +14,30 @@ export default function FlashBang({ onFinish }: FlashBangProps) {
   const [show, setShow] = useState(true);
 
   useEffect(() => {
+    if (typeof window === "undefined") return; // SSR-safe
+
     let i = 0;
-    let value = 1;
+    let forward = true;
     let typing: NodeJS.Timeout;
 
     const startTyping = () => {
       typing = setInterval(() => {
-        setText(message.slice(0, i + value));
-        i += value;
+        setText(message.slice(0, i + (forward ? 1 : -1)));
+        i += forward ? 1 : -1;
 
         if (i === message.length || i === 0) {
           clearInterval(typing);
           setTimeout(startTyping, 500);
-          value = i === message.length ? -1 : 1;
+          forward = !forward;
         }
       }, typingSpeed);
     };
 
     startTyping();
 
-    // Start fade out after total duration
-    const fadeTimer = setTimeout(
-      () => setFade(true),
-      message.length * typingSpeed * 2 + 500
-    );
-    // Unmount after fade duration (0.5s)
+    // Fade after total duration
+    const fadeTimer = setTimeout(() => setFade(true), message.length * typingSpeed * 2 + 500);
+    // Hide after fade
     const removeTimer = setTimeout(() => {
       setShow(false);
       if (onFinish) onFinish();

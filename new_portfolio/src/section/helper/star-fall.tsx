@@ -8,7 +8,7 @@ export default function FallingStars() {
   >([]);
 
   useEffect(() => {
-    const newStars = Array.from({ length: 10 }).map((_, i) => ({
+    const newStars = Array.from({ length: 20 }).map((_, i) => ({
       id: i,
       startX: Math.random() * window.innerWidth,
       startDelay: Math.random() * 2,

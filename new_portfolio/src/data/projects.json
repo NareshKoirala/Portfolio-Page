@@ -1,0 +1,88 @@
+{
+  "ResumeBuilderSystem": {
+    "name": "Resume Builder Job Board",
+    "description": "A full-stack project that allows users to create, customize, and manage resumes. It includes a web interface, backend API, and a MAUI mobile app version.",
+    "technologies": {
+      "frontend": ["React", "Next.js", "Tailwind CSS"],
+      "backend": [
+        ".NET 9",
+        "C#",
+        ".NET Core Web API",
+        "Entity Framework",
+        "Swagger / OpenAPI"
+      ],
+      "mobile": [".NET MAUI", "Bootstrap"],
+      "database": ["MongoDB", "MySQL", "Postgres DB"],
+      "AI / ML / integrations": [
+        "OpenAI API",
+        "Prompt Engineering",
+        "Keyword Extraction / Fit Scoring"
+      ],
+      "infrastructure / devOps": [
+        "Docker",
+        "Docker Compose",
+        "Git",
+        "Visual Studio",
+        "VS Code"
+      ],
+      "architecture / patterns": [
+        "Clean / Layered Architecture",
+        "Separation of Concerns",
+        "API-First Design"
+      ]
+    },
+    "features": [
+      "AI-powered resume & cover letter generation (with prompt engineering)",
+      "API endpoints for resume parsing, JSON generation, and job matching",
+      "Containerized microservice setup using Docker and Docker-Compose",
+      "User authentication and profile management",
+      "Data persistence using PostgreSQL, MySQL, and MongoDB",
+      "Swagger-documented RESTful API built with .NET 9",
+      "Modular architecture connecting MAUI app, Next.js web, and .NET API",
+      "Deployment of backend with live public API"
+    ],
+    "status": "In Production",
+    "timeline": "2025",
+    "github": "https://github.com/NareshKoirala/Resume-Builder-Job-Board",
+    "testlink": "https://resume-builder-job-web-app.vercel.app"
+  },
+  "AutomatedConnect4Game": {
+    "name": "Automated Connect 4 Game",
+    "description": "An automated Connect 4 system integrating robotics and AI for real-time gameplay. Combines embedded hardware control, web-based interaction, and algorithmic decision-making.",
+    "technologies": {
+      "hardware": [
+        "Raspberry Pi Pico",
+        "ESP32",
+        "Servo Motors",
+        "Stepper Motor",
+        "Infrared Sensors",
+        "Relay Module"
+      ],
+      "software": [
+        "MicroPython",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "WebSocket Communication"
+      ],
+      "tools": ["Thonny IDE", "Arduino IDE", "GitHub", "VS Code"]
+    },
+    "features": [
+      "AI-based game logic with adjustable difficulty levels",
+      "Motorized mechanism for automated token dropping",
+      "ESP32-hosted web dashboard for real-time control and visualization",
+      "Bidirectional serial and Wi-Fi communication between controllers",
+      "Hardware-state monitoring for fault detection and calibration"
+    ],
+    "highlights": [
+      "Implemented Minimax algorithm on Raspberry Pi Pico for AI gameplay",
+      "Integrated ESP32 web server for live game control via browser",
+      "Designed synchronized servo control for accurate token placement",
+      "Optimized communication between Pico and ESP32 for low-latency response"
+    ],
+    "status": "Completed",
+    "timeline": "2024",
+    "github": "https://github.com/ABaira/AutoConnect4",
+    "testlink": "https://nareshkoirala.github.io/MineRepo/AutoConnect4/index.html"
+  }
+}
